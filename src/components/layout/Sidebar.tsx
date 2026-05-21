@@ -45,13 +45,6 @@ export function Sidebar() {
           ))}
         </div>
       </nav>
-
-      <div className="border-t border-slate-200 p-5 dark:border-slate-800">
-        <button className="flex w-full items-center gap-2 rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
-          <Settings className="h-4 w-4" />
-          Settings
-        </button>
-      </div>
     </aside>
   );
 }
