@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Taskboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Kanban board app I built using React, TypeScript, Redux Toolkit, and Tailwind CSS. You can move tasks around between To Do, In Progress, and Done columns using drag-and-drop.
 
-Currently, two official plugins are available:
+## What I Completed
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Setup**: Got the project running with Vite, React 19, and TypeScript.
+* **UI/Layout**: Built the main board layout, columns, and individual task cards.
+* **Drag and Drop**: Wrote a custom HTML5 drag-and-drop feature to move tasks across columns and reorder them. It includes a visual preview while dragging.
+* **State Management**: Set up Redux Toolkit to handle tasks, users, and UI state. 
+* **Data Fetching**: Hooked up async thunks to pull the initial tasks and users from an external API. I also had to write some logic to figure out task priorities and statuses since the API didn't give me everything I needed.
+* **Filtering & UI Extras**: Added search/filters, summary metric cards, and a modal that pops up to show task details. 
+* **Styling**: Styled everything using Tailwind v4 (including dark mode) without using heavy UI component libraries.
 
-## React Compiler
+## What I Didn't Complete (Important!)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Saving Updates**: When you drag a task to a new column or change its priority, it updates in the Redux store but doesn't actually save back to the backend API.
+* **Creating Tasks**: There's a '+' button to add a task, but I didn't get around to wiring it up to actually create and save a new one.
+* **Editing Tasks**: You can't really edit task titles or assign users yet (missing full CRUD).
+* **Auth**: The app loads a list of users, but there isn't a real login system to tie tasks to whoever is currently logged in.
 
-## Expanding the ESLint configuration
+## Challenges Faced
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Custom Drag-and-Drop**: Figuring out the native HTML5 drag-and-drop API from scratch was a headache. I decided not to use a library like `dnd-kit`, which meant I had to manually handle drag events, calculate where things should drop, and deal with ghost images.
+* **Redux Sync**: Keeping the Redux store's order in sync when dragging items around took a lot of trial and error.
+* **No UI Libraries**: Doing all the interactive UI stuff (like dialogs) from scratch using just React and Tailwind took way longer than I expected since I couldn't just drop in Radix UI or something similar.
+* **Weird API Data**: The external API just gave me basic Todo objects. I had to write custom logic to derive stuff like "In Progress" status and "Priority" levels just to make the Kanban board work properly.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* React 19
+* TypeScript
+* Vite
+* Redux Toolkit
+* Tailwind CSS v4
+* Lucide React
