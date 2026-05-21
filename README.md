@@ -4,13 +4,13 @@ A simple Kanban board app I built using React, TypeScript, Redux Toolkit, and Ta
 
 ## What I Completed
 
-* **Setup**: Got the project running with Vite, React 19, and TypeScript.
-* **UI/Layout**: Built the main board layout, columns, and individual task cards.
-* **Drag and Drop**: Wrote a custom HTML5 drag-and-drop feature to move tasks across columns and reorder them. It includes a visual preview while dragging.
-* **State Management**: Set up Redux Toolkit to handle tasks, users, and UI state. 
-* **Data Fetching**: Hooked up async thunks to pull the initial tasks and users from an external API. I also had to write some logic to figure out task priorities and statuses since the API didn't give me everything I needed.
-* **Filtering & UI Extras**: Added search/filters, summary metric cards, and a modal that pops up to show task details. 
-* **Styling**: Styled everything using Tailwind v4 (including dark mode) without using heavy UI component libraries.
+* Got the base project up and running with React 19, Vite, and TypeScript.
+* Built out the main Kanban board layout, including the columns and the individual cards for each task.
+* I managed to get a custom drag-and-drop working using native HTML5. You can drag tasks between columns and reorder them, and it even shows a little preview image while you're dragging.
+* Set up Redux Toolkit to keep track of all the state (tasks, users, and whether dialogs are open).
+* I wired up the app to pull the initial tasks and users from the external API. Since the API only gave me basic data, I had to write some extra code on the frontend to figure out what priority and status each task should have.
+* Added a search bar and some filters, plus those summary cards at the top. I also made a modal that pops up when you click a task to see more details.
+* Styled the whole thing using Tailwind CSS (v4). It even has a dark mode, and I did all this without relying on big component libraries like Radix.
 
 ## What I Didn't Complete (Important!)
 
